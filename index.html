@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<!-- IE compatibility -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- Mobile First -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Horaires et billets de train et de bus, en France et en Europe | Trainline</title>
+		<!-- custom fonts/icons -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet"> 
+		<!-- mon CSS -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<div id="headerInfo">
+				<div id="logoTrain">
+					<img src="img/logotrainline.svg" alt="Logo de Logotrain">
+				</div>				
+				<div id="create">
+					<a href="#">CRÉER UN COMPTE</a>
+				</div>
+				<div id="login">
+					<a href="#">SE CONNECTER</a>
+				</div>
+				<div id="help">AIDE</div>
+				<!-- AJOUTER ONCLICK OUVERTURE DE FENETRE CHOIX DE LANGUE -->
+				<div id="flag">
+					<img src="img/france.svg" alt="logo du drapeau français">
+				</div>
+				<div id="money">
+					<p>EUR</p>
+				</div>
+				<!-- Panneau choix de langues -->
+				<div id="languages">
+					<h3>Sélectionnez votre pays</h3>
+					<div id="europe">
+						<p>Europe</p>
+						<img src="img/flags/cz.svg" alt="drapeau de la Rep Tcheque">
+						<img src="img/flags/dk.svg" alt="drapeau du Danemark">
+						<img src="img/flags/de.svg" alt="drapeau de l'Allemagne">
+						<img src="img/flags/es.svg" alt="drapeau de l'Espagne">
+						<img src="img/france.svg" alt="drapeau de la France">
+						<img src="img/flags/it.svg" alt="drapeau de l'Italie">
+						<img src="img/flags/nl.svg" alt="drapeau de la Hollande">
+						<img src="img/flags/no.svg" alt="drapeau de la Norvège">
+						<img src="img/flags/at.svg" alt="drapeau de l'Autriche">
+						<img src="img/flags/pl.svg" alt="drapeau de la Pologne">
+						<img src="img/flags/pt.svg" alt="drapeau du Portugal">
+						<img src="img/flags/ch.svg" alt="drapeau de la Suisse">
+						<img src="img/flags/se.svg" alt="drapeau de la Suède">
+						<img src="img/flags/gb.svg" alt="drapeau de la Grande Bretagne">
+					</div>
+					<div id="others">
+						<div id="asia">
+							<p>Asie-Pacifique</p>
+							<img src="img/flags/chine.svg" alt="drapeau de la Chine">
+						</div>
+						<div id="america">
+							<p>Amérique</p>
+							<img src="img/flags/br.svg" alt="drapeau du Brésil">
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<main>
+			<div id="firstP">
+				<div id="resa">
+					<h1>Réservez vos billets de train et de bus.<br>
+					En France et en Europe.</h1>
+					<h2>Voyagez avec trainline, leader indépendant de la vente de billets de train et de bus en Europe.</h2>
+				</div>
+				<div id="formPro">
+					<div id="center">
+						<div id="search">
+							<form method="post" action="#" enctype="multipart/form-data">
+								<label id="route">Quel est votre trajet ?</label><br>
+								<!-- PREMIER INPUT OUVRE UNE LISTE -->
+								<input id="departure" placeholder="Saississez votre gare de départ..." readonly="readonly" onclick="gareDepart()"><br>		
+								<!-- SECOND INPUT OUVRE UNE LISTE -->
+								<input id="arrival" placeholder="Saississez votre gare de d'arrivée..." readonly="readonly" onclick="gareRetour()"><br>
+								<!-- TROISIEME/QUATRIEME INPUT OUVRE UNE DATEPICKER -->
+								<input id="aller" placeholder="Aller" readonly="readonly" onclick="dateDepart()"><br>
+								<input id="retour" placeholder="Retour" readonly="readonly" onclick="dateRetour()"><br>
+								<!-- DERNIER INPUT JS JS JS JS JS: CHOISIR TYPE DE PASSAGER / MODALE POUR CARTES / AJOUT DE PASSAGERS / MODALE CONNECTION -->
+								<div id="passenger">
+									<input id="pass" placeholder="1 Adulte (26-59)" readonly="readonly" onclick="passenger()">
+									<button id="passBout"><i class="fas fa-plus"></i></button>
+								</div>
+								<!-- SUR CLIQUE OUVRE UN INPUT AVEC ICONE ET OUVRE FENETRE A DROITE POUR SELECTIONNER SUR QUEL PASSAGER APPLIQUER LA REDUC-->
+								<div id="lastLine">
+									<div id="promo">
+										<a href="#">Utiliser un code de réduction</a>
+									</div>
+									<div id="validate">
+										<input type="submit" value="RECHERCHER">
+									</div>
+								</div>
+							</form>			
+						</div>
+						<div class="station">
+							<h2>Choisissez une gare de départ</h2>
+							<ul>
+								<li>
+									<div id="firstInput"><i class="fas fa-map-marker-alt"></i><a>Paris</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>London (Londres)</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Lyon</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Lille</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Bordeaux</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Strasbourg</a></div>
+								</li>
+								<li>
+									<div id="lastInput"><i class="fas fa-map-marker-alt"></i><a>Marseille St-Charles</a></div>
+								</li>
+							</ul>
+						</div>
+						<div class="stationBack">
+							<h2>Choisissez une gare d'arrivée</h2>
+							<ul>
+								<li>
+									<div id="firstInput"><i class="fas fa-map-marker-alt"></i><a>Paris</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>London (Londres)</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Lyon</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Lille</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Bordeaux</a></div>
+								</li>
+								<li>
+									<div class="nextInput"><i class="fas fa-map-marker-alt"></i><a>Strasbourg</a></div>
+								</li>
+								<li>
+									<div id="lastInput"><i class="fas fa-map-marker-alt"></i><a>Marseille St-Charles</a></div>
+								</li>
+							</ul>
+						</div>
+						<div class="date">
+							<!-- Div Non-terminée - manque de temp -->
+							<h2>Choisissez la date du départ</h2>
+						</div>
+						<div class="dateBack">
+							<!-- Div Non-terminée - manque de temp -->
+							<h2>Choisissez la date d'arrivée</h2>
+						</div>
+						<div class="selectPass">
+							<!-- Div Non-terminée - manque de temp -->
+							<h2>Choisissez vos passagers</h2>
+							<div id="age">
+								<select>
+									<option value="0">Jeune (0-25)</option>
+									<option value="1">Adulte (26-59)</option>
+									<option value="2">Senior (60+)</option>
+								</select>
+							</div>
+							<div id="abo">
+								<p>Cartes et abonnements</p>
+							</div>
+							<h3>AJOUTER UN AUTRE PASSAGER</h3>
+							<p>Retrouver vos passagers sauvegardés ?</p>
+							<p>Connectez-vous à votre compte pour accéder aux passagers enregistrés lors de vos précédentes recherches.</p>
+							<a href="">SE CONNECTER</a>
+						</div>
+						<div class="pros">
+							<div id="prosHeader">
+								<h3>Les petits plus de Trainline</h3>
+							</div>
+							<div id="prosList">
+								<ul>
+									<li class="plus">
+										<i class="fas fa-tag"></i>
+										<h4>Vos billets au meilleur prix</h4>
+										<p>Achetez vos billets aux prix fixés par les transporteurs, sans frais supplémentaires.</p>
+									</li>
+									<li class="plus">
+										<i class="far fa-id-card"></i>
+										<h4>Cartes de réduction</h4>
+										<p>Elles sont toutes acceptées, comme vos cartes de fidélité.</p>
+									</li>
+									<li class="plus">
+										<i class="far fa-credit-card"></i>
+										<h4>Payez en toute sécurité</h4>
+										<p>CB, Amex, PayPal, Chèques-Vacances ANCV : c’est vous qui voyez.</p>
+									</li>
+								</ul>
+								<p id="proLead">L’app leader pour voyager en train et en bus en Europe</p>
+							</div>
+							<div id="prosApp">
+								<img class="logo" src="img/apple.svg" alt="logo Itunes">
+								<img class="logo" src="img/google.svg" alt="logo GooglePlay">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="trust">
+					<p>Ils nous font confiance. Nous vendons leurs billets.</p>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div>
+				<div id="partners">
+					<div id="firstPartners">
+						<img id="sncf" src="img/partners/sncf.svg" alt="logo sncf">
+						<img id="ouigo" src="img/partners/ouigo.svg" alt="logo ouigo">
+						<img id="ouibus" src="img/partners/ouibus.svg" alt="logo ouibus">
+						<img id="thalys" src="img/partners/thalys.svg" alt="logo thalys">
+						<img id="eurostar" src="img/partners/eurostar.png" alt="logo eurostar">
+						<img id="tgv" src="img/partners/tgv.svg" alt="logo tgv">
+						<img id="db" src="img/partners/db.svg" alt="logo db">
+					</div>
+					<div id="secondPartners">
+						<img id="trenitalia" src="img/partners/trenitalia.svg" alt="logo trenitalia">
+						<img id="thello" src="img/partners/thello.svg" alt="logo thello">
+						<img id="italo" src="img/partners/italo.svg" alt="logo italo">
+						<img id="renfe" src="img/partners/renfe.svg" alt="logo renfe">
+						<img id="bentley" src="img/partners/bentley.svg" alt="logo B">
+						<img id="arrow" src="img/partners/arrow.svg" alt="logo arrow">
+						<img id="redarrow" src="img/partners/redarrow.svg" alt="logo redarrow">
+					</div>
+				</div>
+				<div id="ticket">
+					<h2>Tous les billets. Un seul guichet.</h2>
+					<p>Nous vendons tous les billets que vous avez l’habitude d’acheter en France <br>
+					et tous ceux dont vous pourriez avoir besoin à l’étranger.</p>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="twoPassengers">
+				<div id="picPassengers">
+					<img src="img/passengers.jpg" alt="photo de deux passagers">
+				</div>
+				<div id="simple">
+					<h2>C'est simple c'est tout.</h2>
+					<p>Consultez les horaires des trains et le prix des billets dans une interface claire. Nous comparons les prix de plusieurs transporteurs, pour que vous n’ayez pas à le faire.</p>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="train">
+				<div id="trainText">
+					<h2>La très grande vitesse. Dès l’achat du billet.</h2>
+					<p>Trouvez et payez vos billets sur notre site en moins de temps qu’il n’en faut pour perdre patience sur un site ordinaire. Soit à peu près 58 secondes.</p>
+				</div>
+				<div id="trainPic">
+					<img src="img/train.jpg" alt="photo d'un train en gare'">
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="add">
+				<div id="addPic">
+					<img src="img/tracks.jpg" alt="photo d'une voie de chemin de fer'">
+				</div>
+				<div id="addText">
+					<h2>Sans pub et sans reproche.</h2>
+					<p>En choisissant de ne vendre que des billets, nous avons dû laisser certaines choses de côté, comme les publicités, les messages et les erreurs incompréhensibles.</p>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="work">
+				<h2>Comment ça marche ?</h2>
+			</div>
+			<div id="details">
+				<div id="pay">
+					<p id="payment">Paiement</p>
+					<div id="means">
+						<img id="cards" src="img/cards.svg" alt="logo de cartes bancaires">
+						<p> ou </p>
+						<img id="paypal" src="img/paypal.svg" alt="logo PayPal">
+					</div>
+					<p id="secure">Nous soignons et sécurisons vos achats comme s’ils n’avaient pas de prix.</p>
+				</div>
+				<div id="receive">
+					<div id="action">
+						<p id="ticketing">Billets</p>
+						<div id="result">
+							<img id="trainTicket" src="img/tickets.svg" alt="logo de billets de train">
+							<p> ou </p>
+							<img id="pdf" src="img/pdf.svg" alt="logo de document pdf">
+						</div>
+						<p id="obtain">Vous obtenez un billet cartonné à retirer en gare ou un e-billet à imprimer chez vous.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="bus">
+				<h2>Allez-y (aussi) en bus</h2>
+				<p>Nous vendons également des billets de bus pour que vous ayez le choix, sans l’embarras.</p>
+				<img src="img/busComp.svg" alt="logo d'un ordinateur">
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="opinion">
+				<h2>Demandez conseil à nos utilisateurs.</h2>
+				<p>Tout le marketing du monde ne remplacera jamais ce que nos utilisateurs disent de nous.</p>
+				<p>C’est encore eux qui parlent le mieux de notre service.</p>
+				<div id="tweets">
+					<ul>
+						<li>
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li>
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li>
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+						<li class="hide">
+							<blockquote class="twitter-tweet" data-link-color="#2B7BB9">
+								<p lang="it" dir="ltr">Viaggio in treno in Olanda con Trainline ➡️ 
+									<a href="https://t.co/ikBmqmBeJQ">https://t.co/ikBmqmBeJQ</a> 
+									<a href="https://twitter.com/trainline_it?ref_src=twsrc%5Etfw">@trainline_it</a> 
+									<a href="https://twitter.com/hashtag/ad?src=hash&amp;ref_src=twsrc%5Etfw">#ad</a> 
+									<a href="https://twitter.com/hashtag/trainline?src=hash&amp;ref_src=twsrc%5Etfw">#trainline</a> 
+									<a href="https://twitter.com/hashtag/viaggidiFederchicca?src=hash&amp;ref_src=twsrc%5Etfw">#viaggidiFederchicca</a>
+									<a href="https://t.co/bTdxFsmSn6">pic.twitter.com/bTdxFsmSn6</a>
+								</p>
+								&mdash; Federica Piersimoni (@federchicca) 
+								<a href="https://twitter.com/federchicca/status/1040140090159374337?ref_src=twsrc%5Etfw">September 13, 2018</a>
+							</blockquote>
+							<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						</li>
+					</ul>
+					<button onclick="tweets()">PLUS D'AMOUR...</button>
+					<div id="papers">
+						<img id="france2" src="img/papers/france2.png" alt="logo france2">
+						<img id="minutes" src="img/papers/20min.png" alt="logo 20minutes">
+						<img id="canal" src="img/papers/canal.png" alt="loo Canal+">
+						<img id="challenges" src="img/papers/challenges.png" alt="logo challenges">
+						<img id="figaro" src="img/papers/figaro.png" alt="logo figaro">
+						<img id="lci" src="img/papers/lci.png" alt="logo LCI">
+						<img id="lemonde" src="img/papers/lemonde.png" alt="logo LeMonde">
+						<img id="ouifm" src="img/papers/ouifm.png" alt="logo OuiFM">
+						<img id="parisien" src="img/papers/parisien.png" alt="logo LeParisien">
+						<img id="techcrunch" src="img/papers/techcrunch.png" alt="logo TechCrunch">
+					</div>
+				</div>
+			</div>
+
+			<!-- NOUVEAU PARAGRAPHE -->
+			<div id="onboard">
+				<h2>Montez à bord !</h2>
+				<p>Arrêtez de vous prendre la tête. Prenez le train.</p>
+				<a href="#search"><input type="submit" value="RÉSERVER UN BILLET"></a>
+			</div>
+
+			<!-- NOUVELLES COULEUR DE FOND -->
+			<div id="links">
+				<div id="firstCol">
+					<img src="img/logoTrainline.svg" alt="logo Trainline">
+					<ul>
+						<li><a href="#">Contacter Trainline</a></li>
+						<li><a href="#">Site d’aide</a></li>
+						<li><a href="#">Qui sommes-nous ?</a></li>
+						<li><a href="#">Informations presse & Blog</a></li>
+						<li><a href="#">Pour les entreprises</a></li>
+						<li><a href="#">Offres d’emploi</a></li>
+						<li><a href="#">CGV & Informations légales</a></li>
+						<li><a href="#">Données personnelles & Cookies</a></li>
+					</ul>
+				</div>
+				<div id="secondCol">
+					Chaque mois, plus de 16,5 millions de personnes visitent les sites ou applications Trainline. <a href="">Téléchargez l’app.</a><br>
+					<!-- logo itunes -->
+					<img id="apple" src="img/apple.svg" alt="logo iTunes">
+					<!-- logo googleplay -->
+					<img id="googleplay" src="img/google.svg" alt="logo GooglePlay">
+				</div>
+				<div id="thirdCol">
+					<p>Destinations</p>
+					<ul>
+						<li><a href="#">Trains pour Paris</a></li>
+						<li><a href="#">Trains pour Lyon</a></li>
+						<li><a href="#">Trains pour Nice</a></li>
+						<li><a href="#">Trains pour Marseille</a></li>
+						<li><a href="#">Trains pour Bordeaux</a></li>
+						<li><a href="#">Trains pour Toulouse</a></li>
+						<li><a href="#">Trains pour Montpellier</a></li>
+					</ul>
+				</div>
+				<div id="fourthCol">
+					<p>Horaires</p>
+					<ul>
+						<li><a href="">Paris – Marseille</a></li>
+						<li><a href="">Marseille – Paris</a></li>
+						<li><a href="">Paris – Lyon</a></li>
+						<li><a href="">Paris – Bordeaux</a></li>
+						<li><a href="">Paris – Toulouse</a></li>
+						<li><a href="">Paris – Lille</a></li>
+						<li><a href="">Paris – Londres</a></li>
+					</ul>
+				</div>
+				<div id="fifthCol">
+					<p>Gares</p>
+					<ul>
+						<li><a href="">Paris Gare du Nord</a></li>
+						<li><a href="">Paris Gare de Lyon</a></li>
+						<li><a href="">Paris Gare Montparnasse</a></li>
+						<li><a href="">Paris Gare de l’Est</a></li>
+						<li><a href="">Lyon Part-Dieu</a></li>
+						<li><a href="">Paris Gare St-Lazare</a></li>
+						<li><a href="">Marseille St-Charles</a></li>
+					</ul>
+				</div>
+				<div id="sixthCol">
+					<p>Voyager en train</p>
+					<ul>
+						<li><a href="">SNCF & TGV</a></li>
+						<li><a href="">OUIGO & Ouibus</a></li>
+						<li><a href="">Eurostar</a></li>
+						<li><a href="">Eurolines</a></li>
+						<li><a href="">Cartes & abonnements SNCF</a></li>
+						<li><a href="">Pass Interrail</a></li>
+						<li><a href="">Trains pour les aéroports </a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="foot">
+				<div id="leftIcons">
+					<p>Suivez-nous</p>
+					<!-- Logo FB -->
+					<a href="www.facebook.com"><img src="img/fb.svg" alt="logo Facebook"></a>
+					<!-- Logo Twitter -->
+					<a href="www.twitter.com"><img src="img/twitter.svg" alt="logo Twitter"></a>
+				</div>
+				<div id="rightIcons">
+					<!-- Logo ApplePay -->
+					<a href="#"><img src="img/applepay.svg" alt="logo ApplePay"></a>
+					<!-- Logo Paypal -->
+					<a href="#"><img src="img/paypal.svg" alt="logo Paypal"></a>
+				</div>
+			</div>
+		</main>
+		
+		<footer>
+			<!-- my JS -->
+			<script type="text/javascript" src="js/script.js"></script>
+		</footer>
+	</body>
+</html>

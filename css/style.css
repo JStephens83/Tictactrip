@@ -1,0 +1,1179 @@
+/*
+A FAIRE:
+- créer/customiser datepicker
+- vérifier si form correcte
+- menu burger en mobile
+- mobile rechargement en app
+- terminer détails sélection de passagers
+*/
+
+/*
+problèmes rencontrés:
+- intégrer des exemples de tweets dans le site
+- svg dans un input
+- Beaucoup de petits détails, dur de prioriser
+- Datepicker customisation
+- mobile rechargement en app
+*/
+*{
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #fff;
+	color: #fff;
+	font-family: arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1,h2,h3{
+	margin: 0;
+}
+
+input{
+	border: 0px solid;
+}
+
+/**** HEADER ****/
+header{
+	background-color: #3C4E69;
+	width: 100%;
+	text-align: center;
+	height: 60px;
+}
+
+#headerInfo{
+	width: 50%;
+	margin: 0 auto;
+	white-space: nowrap;
+}
+
+#logoTrain,#create,#login,#help,#flag,#money{
+	display: inline-block;
+	margin: 0 10px;
+}
+
+#logoTrain{
+	float: left;
+	line-height: 60px;
+}
+
+#logoTrain img{
+	margin-top: 14%
+}
+
+#create{
+	margin-left: 35%;
+}
+
+#create a,#login a{
+	text-decoration: none;
+	color: #fff;
+	background-color: #01C3A7;
+	border-radius: 5px;
+	padding: 8px 18px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#help{
+	font-size: 12px;
+	letter-spacing: 1px;
+	line-height: 60px;
+	font-weight: bold;
+}
+
+#flag{
+	vertical-align: text-top;
+}
+
+#flag img{
+	border: 2px solid #C0C9CC;
+	border-radius: 8px;
+	width: 112%;
+}
+
+#money{
+	font-size: 11px;
+	border: 2px solid #C0C9CC;
+	border-radius: 8px;
+	padding: 4px 4px;
+	font-weight: bold;
+	vertical-align: middle;
+	overflow: auto;
+}
+
+#money p{
+	margin: 0;
+}
+
+#languages{
+	display: none;
+	width: 30%;
+	position: absolute;
+	right: 0;
+	top: 60px;
+	background-color: #fff;
+	height: 100vh;
+}
+
+#languages img{
+	display: list-item;
+	margin: 10px 0 10px 40px;
+	border: 2px solid #C0C9CC;
+	border-radius: 5px;
+	padding: 1px;
+}
+
+#languages h3{
+	float: left;
+	margin: 40px 40px;
+	color: #8C9DA1;
+	font-size: 24px;
+	width: 100%;
+	text-align: left;
+}
+
+#languages p{
+	margin: 0 40px;
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#europe, #others{
+	width: 49%;
+	display: inline-block;
+}
+
+#america{
+
+}
+
+/**** MAIN ****/
+/** 1er Paragraphe **/
+/*Left square*/
+form ::placeholder{
+	color: #B8B8B9;
+	opacity: 1;
+	font-weight: lighter;
+}
+
+#firstP{
+	background: #3C4E69 url("../img/beach.jpg") no-repeat center;
+	background-size: cover;
+	min-height: 80vh;
+}
+
+#resa h1,#resa h2{
+	text-align: center;
+}
+
+#resa h1{
+	letter-spacing: 2px;
+	text-shadow: 0px 1px 5px #000;
+	padding-top: 2%;
+	margin-bottom: 1%;
+}
+
+#resa h2{
+	font-size: 18px;
+	font-weight: lighter;
+	text-shadow: 0px 1px 5px #000;
+	margin-bottom: 3%;
+}
+
+#search label{
+	color: #000;
+	letter-spacing: 0.5px;
+	font-size: 22px;
+	opacity: 0.7;
+}
+
+#route + br{
+	margin-bottom: 20px;
+}
+
+#center{
+	height: 500px;
+	width: 100%;
+	text-align: center;
+}
+
+#search{
+	display: inline-block;
+	background-color: #FFF;
+	border-radius: 5px 5px 5px 5px;
+	height: 500px;
+	min-width: 450px;
+	max-width: 460px;
+	padding: 25px 40px 40px 40px;
+	vertical-align: top;
+	text-align: initial;
+}
+
+#departure, #arrival, #aller, #retour, #pass{
+	height: 44px;
+	width: 100%;
+	border-color: #C3C3C3;
+	background-color: #FAFAFC; 
+	padding: 10px 10px 10px 34px;
+	font-size: 14px;
+}
+
+#departure, #aller{
+	margin-bottom: 0;
+	border-radius: 5px 5px 0px 0px;
+	border-width: 1px;
+}
+
+#departure{
+	background: url(../img/departure.svg) no-repeat;
+	background-position: 3% 48%;
+}
+#departure:focus{
+	border: 1px solid #01C3A7;
+}
+
+#arrival{
+	background: url(../img/arrival.svg) no-repeat;
+	background-position: 3% 48%;
+}
+#arrival:focus{
+	border: 1px solid #01C3A7;
+}
+
+#aller{
+	background: url(../img/aller.svg) no-repeat;
+	background-position: 3% 48%;
+}
+#aller:focus{
+	border: 1px solid #01C3A7;
+}
+
+#retour{
+	background: url(../img/retour.svg) no-repeat;
+	background-position: 3% 48%;
+}
+#retour:focus{
+	border: 1px solid #01C3A7;
+}
+
+#arrival, #retour{
+	margin-top: 0;
+	border-radius: 0px 0px 5px 5px;
+	border-width: 0px 1px 1px 1px;
+	margin-bottom: 30px;
+}
+
+#passenger{
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+#pass{
+	background: url(../img/user.svg) no-repeat;
+	background-position: 3% 48%;
+	display: inline-block;
+	width: 85%;
+	margin-top: 0;
+	border-radius: 5px 0 0 5px;
+	border-width: 1px;
+}
+#pass:focus{
+	border: 1px solid #01C3A7;
+}
+
+#passBout{
+	display: inline-block;
+	float: right;
+	background-color: #FFF;
+	width: 15%;
+	border: 1px solid #CCC;
+	border-left: 0;
+	height: 44px;
+}
+
+.fa-plus{
+	font-size: 20px;	line-height: 44px;
+	text-align: center;
+	color: #01C3A7;
+}
+
+#passenger ::placeholder{
+	color: #000;
+	opacity: 1;
+}
+
+#promo{
+	font-size: 12px;
+	clear: both;
+	margin-top: 20px;
+	display: inline-block;
+	width: 45%;
+	vertical-align: super;
+}
+
+#promo a{
+	text-decoration: none;
+	color: #01C3A7;
+}
+
+#promo a:hover{
+	text-decoration: underline;
+}
+
+form input[type=submit]{
+	float: right;
+	background-color: #01C3A7;
+	color: #FFF;
+	padding: 10px 35px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+#validate{
+	display: inline-block;
+	width: 45%;
+	margin: 0 0 0 28px;
+}
+
+
+/*Right square*/
+.pros{
+	display: inline-block;
+	background-color: #FFF;
+	border-radius: 5px;
+	height: 100%;
+	max-width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	text-align: initial;
+	z-index: 1;
+}
+
+#prosHeader{
+	background-color: #253551;
+	height: 70px;
+	border-radius: 5px 5px 0 0;
+}
+
+#prosHeader h3{
+	line-height: 70px;
+	font-size: 22px;
+	margin-left: 40px;
+}
+
+#prosList ul{
+	list-style-type: none;
+	margin-top: 18px;
+	margin-bottom: 24px;
+}
+
+#prosList li{
+	margin-bottom: 10px;
+}
+
+.plus{
+	color: #253551;
+}
+
+.plus h3, .plus h4, .plus p{
+	margin: 0;
+}
+
+.plus h4{
+	margin-left: 10px;
+	font-weight: 600;
+}
+.plus p{
+	margin-left: 54px;
+	margin-right: 40px;
+	font-size: 17px;
+}
+
+.plus i{
+	display: inline-block;
+	background-color: #253551;
+	color: #FFF;
+	border-radius: 200px;
+	padding: 10px;
+}
+
+.plus h4{
+	display: inline-block;
+	color: #01C3A7;
+	font-size: 18px;
+}
+
+#proLead{
+	border-top: 1px solid #C3C3C3;
+	margin: 0 40px;
+	color: #253551;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 20px;
+}
+
+#prosApp{
+	text-align: center;
+}
+
+.logo{
+	display: inline-block;
+	margin-top: 10px;
+}
+#formPro{
+	margin-bottom: 30px;
+	height: 100%;
+	overflow: hidden;
+}
+
+#trust{
+	clear: both;
+	max-width: 910px;
+	min-width: 450px;
+	height: 70px;
+	margin: 0 auto;
+	background-color: #FFF;
+	color: #8C8A8C;
+	border-radius: 5px 5px 0 0;
+	text-align: center;
+	font-size: 20px;
+	line-height: 70px;
+	padding-top: 0 4px;
+}
+
+
+/*Right Square JS overlay #1*/
+.station{
+	display: none;
+	position: absolute;
+	background-color: #FFF;
+	height: 500px;
+	width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	z-index: 2;
+	text-align: initial;
+	padding: 20px 40px 40px 40px;
+	border-radius: 5px;
+}
+
+.station h2{
+	color: #000;
+	font-size: 22px;
+	opacity: 0.7;
+	font-weight: lighter;
+}
+
+.station ul{
+	padding: 0;
+}
+
+.station a{
+	text-decoration: none;
+	color: #B8B8B9;
+	font-size: 15px;
+}
+.station a:hover{
+	color: #323E42;
+}
+
+#firstInput,.nextInput,#lastInput{
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	font-size: 14px;
+	padding-left: 10px;}
+
+#firstInput{
+	border: 1px solid #C3C3C3;
+	border-radius: 5px 5px 0 0;
+}
+
+.nextInput{
+	border: 1px solid #C3C3C3;
+	border-top: 0;
+}
+
+#lastInput{
+	border: 1px solid #C3C3C3;
+	border-top: 0;
+	border-radius: 0 0 5px 5px;
+}
+li i{
+	margin-right: 10px;
+	color: #838A8D;
+	font-size: 16px;
+}
+
+/*Right Square JS overlay #2*/
+.stationBack{
+	display: none;
+	position: absolute;
+	background-color: #FFF;
+	height: 500px;
+	width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	z-index: 2;
+	text-align: initial;
+	padding: 20px 40px 40px 40px;
+	border-radius: 5px;
+}
+
+.stationBack h2{
+	color: #000;
+	font-size: 22px;
+	opacity: 0.7;
+	font-weight: lighter;
+}
+
+.stationBack ul{
+	padding: 0;
+}
+
+.stationBack a{
+	text-decoration: none;
+	color: #B8B8B9;
+	font-size: 15px;
+}
+.stationBack a:hover{
+	color: #323E42;
+}
+
+
+/*Right Square JS overlay #3*/
+.date{
+	display: none;
+	position: absolute;
+	background-color: #FFF;
+	height: 500px;
+	width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	z-index: 2;
+	text-align: initial;
+	padding: 20px 40px 40px 40px;
+	border-radius: 5px;
+}
+
+.date h2{
+	color: #000;
+	font-size: 22px;
+	opacity: 0.7;
+	font-weight: lighter;
+}
+
+
+/*Right Square JS overlay #4*/
+.dateBack{
+	display: none;
+	position: absolute;
+	background-color: #FFF;
+	height: 500px;
+	width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	z-index: 2;
+	text-align: initial;
+	padding: 20px 40px 40px 40px;
+	border-radius: 5px;
+}
+
+.dateBack h2{
+	color: #000;
+	font-size: 22px;
+	opacity: 0.7;
+	font-weight: lighter;
+}
+
+/*Right Square JS overlay #5*/
+/* Non-terminé - manque de temps*/
+.selectPass{
+	display: none;
+	position: absolute;
+	background-color: #FFF;
+	height: 500px;
+	width: 460px;
+	margin-left: 20px;
+	padding: 0 0 20px 0;
+	z-index: 2;
+	text-align: initial;
+	padding: 20px 40px 40px 40px;
+	border-radius: 5px;
+}
+
+.selectPass h2{
+	color: #000;
+	font-size: 22px;
+	opacity: 0.7;
+	font-weight: lighter;
+}
+.selectPass p{
+	color: #000;
+	font-size: 18px;
+}
+
+
+/** 2eme Paragraphe **/
+#partners{
+	margin: 30px auto;
+}
+
+#firstPartners, #secondPartners{
+	width: 49%;
+	margin: 1% 25%;
+	text-align: center;
+}
+
+#firstPartners img, #secondPartners img{
+	margin: ;
+}
+
+#sncf{
+	width: 6%;
+	height: 5%;
+}
+#ouigo, #ouibus, #eurostar, #db{
+	width: 12%;
+	height: 5%;
+}
+
+#thalys{
+	width: 10%;
+	height: 5%;
+}
+
+
+#tgv, #trenitalia{
+	width: 8%;
+	height: 5%;
+}
+
+
+#thello, #renfe,#bentley, #arrow, #redarrow{
+	width: 10%;
+	height: 5%;
+	vertical-align: bottom;
+}
+#italo{
+	width: 7%;
+	height: 5%;
+}
+
+#ticket{
+	margin-bottom: 60px;
+}
+
+#ticket h2{
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550;
+	margin-top: 5%;
+}
+
+#ticket p{
+	color: #8C8A8C;
+	font-size: 18px;
+	line-height: 24px;
+	text-align: center;
+}
+
+
+/** 3eme Paragraphe **/
+#twoPassengers, #train{
+	background-color: #F5F6F7;
+	max-height: 500px;
+}
+
+#picPassengers{
+	display: inline-block;
+	width: 40%;
+	max-height: 500px;
+	margin-left: 9%;
+	height: 100%;
+}
+
+#picPassengers img{
+	width: 100%;
+	max-height: 500px;
+}
+
+#simple{
+	display: inline-block;
+	width: 40%;
+	margin-left: 5%;
+	margin-top: 8%;
+	padding: 20px;
+	vertical-align: top;
+}
+
+#simple h2{
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550;  
+	width: 100%;
+}
+
+#simple p{
+	color: #8C8A8C;
+	font-size: 18px;
+	text-align: justify;
+	line-height: 30px;
+	width: 390px;
+}
+
+
+/** 4eme Paragraphe **/
+#trainText, #trainPic{
+	display: inline-block;
+	width: 40%;
+	max-height: 500px;
+	vertical-align: middle;
+	height: 100%;
+}
+
+#trainPic img{
+	width: 100%;
+	max-height: 500px;
+}
+
+#trainText{
+	width: 40%;
+	margin-left: 9%;
+	padding: 0 50px;
+}
+
+#trainText h2{
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550;
+	margin: 0 15% 1% 15%; 
+}
+
+#trainText p{
+	text-align: justify;
+	line-height: 32px;
+	color: #8C8A8C;
+	font-size: 18px;
+	margin: 0 15% 0 15%;
+}
+
+
+
+/** 5eme Paragraphe **/
+#add, #train{
+	background-color: #F5F6F7;
+	height: 100%;
+}
+
+#addPic, #addText{
+	display: inline-block;
+	width: 40%;
+	max-height: 500px;
+	vertical-align: middle;
+	height: 100%;
+}
+
+#addPic{
+	margin-left: 9%;
+}
+
+#addPic img{
+	max-height: 500px;
+	width: 100%;
+}
+
+#addText{
+	max-width: 32%;
+	margin-left: 150px;
+}
+
+#addText h2{
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550;  
+	margin: 0 15% 1% 15%; 
+}
+
+#addText p{
+	text-align: justify;
+	line-height: 30px;
+	color: #8C8A8C;
+	font-size: 18px;
+	margin: 0 15% 0% 15%; 
+}
+
+/** 6eme paragraphe **/
+#work{
+	margin: 60px 0 40px 0;
+}
+
+#work h2{
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550; 
+}
+
+/* Left part */
+#details{
+	text-align: center;
+	margin-bottom: 2%
+}
+
+#pay, #receive{
+	display: inline-block;
+	text-align: center;
+	width: 40%;
+
+}
+
+#cards, #paypal, #means p, #pay p{
+	color: #8C8A8C;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#cards, #paypal, #trainTicket, #pdf{
+	margin: 0 40px;
+}
+
+#secure{
+	width: 55%;
+	line-height: 24px;
+}
+
+#pay{
+	border-right: 2px solid #ECECEC;
+	padding: 20px;
+}
+
+#payment, #ticketing{
+	color: #8C8A8C;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 35px;
+}
+
+/* Right part */
+
+#trainTicket, #pdf, #result p, #action p{
+	color: #8C8A8C;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#obtain{
+	width: 55%;
+	line-height: 24px;
+}
+
+#action{
+	padding: 20px;
+}
+
+#payment, #ticketing{
+	color: #8C8A8C;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/** 7ème paragraphe **/
+#bus{
+	background-color: #01C3A7;
+	height: 100%;
+	text-align: center;
+	padding: 70px 0;
+}
+
+#bus h2{
+	font-size: 32px;
+	font-weight: bold;
+}
+
+#bus p{
+	display: inline-block;
+	width: 20%;
+	text-align: center;
+	line-height: 24px;
+	font-size: 17px;
+}
+
+#bus img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+/** 8ème paragraphe **/
+#opinion{
+	background-color: #F5F6F7;
+	height: 100%;
+	text-align: center;
+	padding: 70px 0;
+}
+
+#opinion h2{
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	color: #253550;
+	margin-bottom: 20px;
+}
+
+#opinion p{
+	display: inline-block;
+	color: #8C8A8C;
+	font-size: 18px;
+	margin: 0 auto;
+	width: 50%;
+	line-height: 30px;
+	text-align: center;
+}
+
+
+#tweets{
+	width: 100%;
+	text-align: center;
+}
+
+#tweets ul{
+	width: 60%;
+	margin: 20px auto;
+}
+
+#tweets li{
+	display: inline-block;
+	height: 280px;
+	width: 300px;
+	/*border: 1px solid #000;*/
+	border-radius: 5px;
+	margin: 10px 20px;
+}
+
+#tweets iframe{
+	max-height: 280px;
+	max-width: 300px !important;
+	margin: 0 !important;
+	border-radius: 5px;
+	border: 1px solid #CCC;
+}
+
+#tweets button{
+	color: #2B7BB9;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	border: none;
+}
+
+#tweets button:hover{
+	text-decoration: underline;
+}
+
+.hide{
+	display: none !important;
+	opacity: 0;
+}
+
+@keyframes opacity{
+	0%{
+		display: none !important;
+		opacity: 0;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+.unhide{
+	animation: opacity 2s ease-out;
+}
+
+#papers{
+	max-width: 100%;
+	margin-top: 50px;
+}
+
+#france2{
+	width: 20px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#minutes{
+	width: 28px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#canal, #techcrunch{
+	width: 100px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#challenges{
+	width: 80px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#figaro{
+	width: 120px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#lci{
+	width: 56px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#lemonde{
+	width: 92px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#ouifm{
+	width: 25px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+#parisien{
+	width: 60px;
+	margin: 10px;
+	opacity: 0.5;
+}
+
+
+/** 9ème paragraphe **/
+
+#onboard{
+	background-color: #3F618C;
+	padding: 60px 0;
+	text-align: center;
+}
+
+#onboard h2{
+	font-size: 32px;
+}
+
+#onboard input[type=submit]{
+	background-color: #01C3A7;
+	color: #FFF;
+	padding: 14px 20px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#onboard a{
+	text-decoration: none;
+}
+
+/** 10ème paragraphe **/
+
+#links{
+	background-color: #F5F6F7;
+	color: #757575;
+	font-size: 11px;
+	text-align: center;
+}
+
+#links li{
+	list-style-type: none;
+}
+
+#links a{
+	text-decoration: none;
+	color: #3367AB;
+}
+
+#firstCol img{
+	margin-left: 38px;
+}
+
+#firstCol, #thirdCol, #fourthCol, #fifthCol, #sixthCol{
+	display: inline-block;
+	margin: 0 0 20px 38px;
+	line-height: 30px;
+	text-align: justify;
+}
+
+#firstCol{
+	margin-top: 50px;
+}
+
+#secondCol{
+	display: inline-block;
+	margin: 108px 0 50px 0;
+	width: 9%;
+	text-align: left;
+	vertical-align: top;
+	line-height: 20px;
+}
+
+#apple{
+	width: 50%;
+	margin: 20px 0 10px 0;
+}
+
+#googleplay{
+	width: 50%;
+	margin: 0 auto;
+}
+
+#secondCol a{
+	color: #3367AB !important;
+}
+
+#firstCol p, #secondCol p, #thirdCol p, #fourthCol p, #fifthCol p, #sixthCol p{
+	color: #3367AB;
+	margin-left: 38px;
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: 1px solid #3367AB;
+}
+
+/* Dernier paragraphe */
+#foot{
+	width: 62%;
+	padding: 40px 0 70px 0;
+	text-align: center;
+	margin: 0 22%;
+}
+
+#foot p{
+	display: inline-block;
+	color: #000;
+	font-size: 14px;
+	vertical-align: bottom;
+}
+
+#leftIcons{
+	display: inline-block;
+	float: left;
+}
+
+#rightIcons{
+	display: inline-block;
+	float: right;
+}
